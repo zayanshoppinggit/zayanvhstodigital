@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { base44 } from '@/api/base44Client';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -13,7 +12,6 @@ export default function Layout({ children, currentPageName }) {
 
   useEffect(() => {
     const fetchSettings = async () => {
-      const allSettings = await base44.entities.SiteSettings.list();
       const settingsMap = {};
       allSettings.forEach(s => {
         settingsMap[s.setting_key] = s.setting_value;
